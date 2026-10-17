@@ -1,0 +1,136 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import "@fontsource-variable/plus-jakarta-sans";
+
+/* Sahara Craft Tech — tokens partagés avec l'application mobile. */
+@theme inline {
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-espresso: var(--espresso);
+  --color-ivoire: var(--ivoire);
+  --color-argile: var(--argile);
+  --color-encre: var(--encre);
+  --color-sauge: var(--sauge);
+  --color-sable: var(--sable);
+  --color-blanc: var(--blanc);
+  --font-display: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 12px;
+  --navy: #001f41;
+  --navy-structure: #0f3460;
+  --orange: #fc6018;
+  --orange-text: #a83900;
+  --page: #faf8ff;
+  --surface: #ffffff;
+  --surface-soft: #f2f3ff;
+  --surface-blue: #eaedff;
+  --sheet: #e2e7ff;
+  --blue-soft: #d5e3ff;
+  --ink: #131b2e;
+  --ink-secondary: #43474f;
+  --ink-muted: #747780;
+  --line: #c3c6d0;
+  --green: #10b981;
+  --green-delivered: #00b27b;
+  --red: #ba1a1a;
+  --whatsapp: #25d366;
+  /* Alias historiques conservés pour ne rien casser dans les composants. */
+  --espresso: var(--navy);
+  --ivoire: var(--page);
+  --argile: var(--orange-text);
+  --encre: var(--ink);
+  --sauge: var(--orange);
+  --sable: var(--surface-blue);
+  --blanc: var(--surface);
+  --background: var(--page);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --primary: var(--navy-structure);
+  --primary-foreground: #ffffff;
+  --secondary: var(--surface-blue);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-soft);
+  --muted-foreground: var(--ink-muted);
+  --accent: var(--orange);
+  --accent-foreground: #ffffff;
+  --border: var(--line);
+  --ring: var(--navy-structure);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0b1220; --surface: #1e2638; --surface-soft: #28324d; --surface-blue: #28324d;
+    --sheet: #28324d; --ink: #e2e7ff; --ink-secondary: #c3c6d0; --ink-muted: #c3c6d0;
+    --line: #43474f; --orange: #ffb59a; --orange-text: #ffb59a; --green: #4edea3;
+    --espresso: #d5e3ff; --ivoire: #0b1220; --argile: #ffb59a; --encre: #e2e7ff;
+    --sauge: #ffb59a; --sable: #28324d; --blanc: #1e2638; --primary: #d5e3ff;
+    --primary-foreground: #0b1220; --secondary: #28324d; --secondary-foreground: #e2e7ff;
+    --muted: #28324d; --muted-foreground: #c3c6d0; --accent: #ffb59a;
+    --accent-foreground: #0b1220; --border: #43474f; --ring: #d5e3ff;
+  }
+}
+
+@utility thread-top { background: var(--orange); }
+@utility stitch-border { border: 1px dashed var(--border); }
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body { min-width: 320px; overflow-x: hidden; background: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4 { color: var(--color-espresso); font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1 { font-size: 32px; font-weight: 800; line-height: 1.25; letter-spacing: -0.64px; }
+  h2 { font-size: 24px; font-weight: 700; line-height: 1.3; }
+  h3 { font-size: 20px; font-weight: 700; line-height: 1.35; }
+  :focus-visible { outline: 2px solid var(--color-ring); outline-offset: 3px; }
+  button, a, input { transition-duration: 200ms; }
+  .font-mono { font-variant-numeric: tabular-nums; letter-spacing: -0.44px; }
+}
+
+@layer components {
+  .rounded-sm { border-radius: 8px; }
+  .rounded-lg { border-radius: 16px; }
+  .rounded-xl { border-radius: 28px; }
+  .shadow-md, .shadow-lg { box-shadow: none; }
+  .bg-sauge { box-shadow: 0 8px 18px rgba(252, 96, 24, 0.18); }
+  [class*="bg-blanc"][class*="border"] { border-radius: 16px; }
+  .group:hover img { transform: translateY(-2px); }
+  .simulator-card .text-espresso { color: var(--ivoire); }
+  .simulator-card .text-encre\/60, .simulator-card .text-encre\/55 { color: color-mix(in srgb, var(--ivoire) 72%, transparent); }
+  /* Le modèle de carte de montants reste navy dans les deux modes. */
+  .simulator-card { background: #001f41 !important; color: #e2e7ff; }
+  .simulator-card .text-espresso { color: #e2e7ff !important; }
+  .simulator-card .text-encre\/60, .simulator-card .text-encre\/55 { color: #c3c6d0 !important; }
+  .simulator-card input { color: #e2e7ff; caret-color: #ffb59a; }
+  .simulator-card input::placeholder { color: #c3c6d0; }
+  .status-badge { display: inline-flex; align-items: center; gap: 8px; border-radius: 9999px; padding: 6px 10px; font-size: 13px; font-weight: 700; }
+  .status-badge::before { width: 6px; height: 6px; border-radius: 9999px; content: ""; background: currentColor; }
+  .status-production { color: #087443 !important; background: color-mix(in srgb, var(--green) 12%, white); border: 1px solid color-mix(in srgb, var(--green) 30%, white); }
+  .status-production::before { background: #087443; }
+  footer a { color: #ffb59a; }
+  footer a:hover { color: #ffffff; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
